@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <h1>MARVEL HEROES</h1>
+{% endblock %}
+
+{% block main %}
+    {% for team in teams %}
+
+    <div class="team" >
+    <h2>TEAM {{ team.name }}</h2>
+    </div>
+        <div class="heroes" >
+    {% for hero in team.heroes %}
+        <div class="hero">
+            <a href={{ path ("hero_detail", {id : hero.id}) }}>
+                <img src ="{{ asset('/uploads/')}}{{ hero.picture }}" width="300px" alt=""></a>
+        <h4>{{ hero.identity }}</h4>
+        </div>
+    {% endfor %}
+    {% endfor %}
+    </div>
+
+{% endblock %}

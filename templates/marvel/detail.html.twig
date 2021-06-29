@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<h1>{{ hero.identity }}</h1>{% endblock %}
+
+{% block main %}
+<div class="description">
+
+<div class="image">
+ <img src ="{{ asset('/uploads/')}}{{ hero.picture }}" width="300px" alt="">
+</div>
+
+<div class="identity">
+
+   <p> First name : {{ hero.firstName }} </p>
+    <br>
+    <p> Last name : {{ hero.lastName }} </p>
+    <br>
+    <p> Team : {{ hero.team.name }} </p>
+    <br>
+    <p> Origin: {{ hero.origin }} </p>
+    <br>
+   <div class="row">
+    <p>Power :
+    {% for power in hero.powers %}
+    {{ power.power }}
+     {% if not loop.last %},{% endif %}
+   {% endfor %}
+    </p>
+   </div>
+    <br>
+    <div class="describe">
+    <p> Description : {{ hero.description }}</p>
+    </div>
+
+
+ </div>
+ <div class="button">
+  <a href = "{{ path('home') }}" class="button">
+   See All Heroes </a>
+ </div>
+</div>
+
+{% endblock %}
+
